@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyS3andEC2WithoutMFA",
+            "Effect": "Deny",
+            "Action": [
+                "s3:*",
+				"ec2:*"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "false"
+                }
+            }
+        }
+    ]
+}

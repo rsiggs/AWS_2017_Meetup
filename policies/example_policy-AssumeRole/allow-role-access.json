@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "iam:GetRole",
+                "iam:GetRolePolicy",
+                "iam:ListRolePolicies",
+                "iam:PutRolePolicy",
+                "iam:ListRoles",
+                "iam:GetUserPolicy",
+                "iam:ListUserPolicies",
+                "iam:ListInstanceProfiles"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

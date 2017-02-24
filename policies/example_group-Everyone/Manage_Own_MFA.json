@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowUsersToCreateEnableResyncTheirOwnVirtualMFADevice",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:ResyncMFADevice"
+            ],
+            "Resource": [
+                "arn:aws:iam::<account_number>:mfa/${aws:username}",
+                "arn:aws:iam::<account_number>:user/${aws:username}"
+            ]
+        },
+        {
+            "Sid": "AllowUsersToDeactivateDeleteTheirOwnVirtualMFADevice",
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeactivateMFADevice",
+                "iam:DeleteVirtualMFADevice"
+            ],
+            "Resource": [
+                "arn:aws:iam::<account_number>:mfa/${aws:username}",
+                "arn:aws:iam::<account_number>:user/${aws:username}"
+            ]
+        },
+        {
+            "Sid": "AllowUsersToListMFADevicesandUsersForConsole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListMFADevices",
+                "iam:ListVirtualMFADevices",
+                "iam:ListUsers",
+                "iam:GetUser",
+                "sts:getSessionToken"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

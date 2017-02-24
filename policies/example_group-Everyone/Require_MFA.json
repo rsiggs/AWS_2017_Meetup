@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DoNotAllowAnythingOtherThanAboveUnlessMFAd",
+            "Effect": "Deny",
+            "NotAction": [
+                "iam:GetAccountSummary",
+                "iam:ListAccountAliases",
+                "iam:CreateVirtualMFADevice",
+                "iam:DeleteVirtualMFADevice",
+                "iam:ChangePassword",
+                "iam:EnableMFADevice",
+                "iam:ListMFADevices",
+                "iam:ListVirtualMFADevices",
+                "iam:ResyncMFADevice",
+                "iam:ListUsers",
+                "iam:ListGroupsForUser",
+                "iam:ListUserPolicies",
+                "iam:ListAccessKeys",
+                "iam:GetLoginProfile",
+                "iam:ListSigningCertificates",
+                "iam:GetUser",
+                "s3:Get*",
+                "s3:List*",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "false"
+                }
+            }
+        }
+    ]
+}
